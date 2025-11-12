@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Погода - быстрый запрос</title>
+<link rel="stylesheet" href="/styles/styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="panel" role="main" aria-labelledby="title">
+      <div class="header">
+        <div class="logo">W</div>
+        <div>
+          <h1 id="title">Погода (WeatherAPI) - быстрый запрос</h1>
+          <p class="lead">Введи название города - получим текущую погоду (current.json)</p>
+        </div>
+      </div>
+
+      <form id="form" class="controls" onsubmit="return false;">
+        <input id="city" type="text" placeholder="Например: Dresden или Berlin" aria-label="Название города" required />
+        <button id="send" type="submit" title="Send">Send</button>
+      </form>
+
+      <div class="main single">
+        <div class="card" id="result">
+          <div id="empty" class="small" style="opacity:0.9">
+            Введите город и нажмите Send - покажу только самое полезное: город (ссылка на карты), температура, условие, ветер, влажность и т.д.
+          </div>
+
+          <div id="data" style="display:none">
+            <div class="city">
+              <div>
+                <a id="maplink" href="#" target="_blank" rel="noopener noreferrer" title="Открыть в Google Maps">
+                  <div class="city-name" id="cityName">-</div>
+                </a>
+                <div class="meta" id="locationMeta">-</div>
+              </div>
+            </div>
+
+            <div class="cond">
+              <img id="icon" src="" alt="" />
+              <div>
+                <div class="temp" id="temp">0°C</div>
+                <div class="small" id="condText">-</div>
+                <div class="small" id="lastUpdated" style="margin-top:8px">-</div>
+              </div>
+            </div>
+
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+              <div class="stat"><div class="k">Feels like</div><div class="v" id="feels">-</div></div>
+              <div class="stat"><div class="k">Wind</div><div class="v" id="wind">-</div></div>
+              <div class="stat"><div class="k">Humidity</div><div class="v" id="hum">-</div></div>
+              <div class="stat"><div class="k">Pressure</div><div class="v" id="pres">-</div></div>
+              <div class="stat"><div class="k">Precip</div><div class="v" id="precip">-</div></div>
+              <div class="stat"><div class="k">Visibility</div><div class="v" id="vis">-</div></div>
+              <div class="stat"><div class="k">UV</div><div class="v" id="uv">-</div></div>
+            </div>
+
+            <div class="footer">
+              <div id="tz" class="small">-</div>
+              <div id="coords" class="small">-</div>
+            </div>
+          </div>
+
+          <div id="error" class="error" style="display:none"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+    <script src="/scripts/main.js"></script>
+</body>
+</html>
