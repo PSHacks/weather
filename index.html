@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Погода - быстрый запрос</title>
 <link rel="stylesheet" href="/styles/styles.css" />
+
+<style>
+.stat {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+}
+.k {
+  font-weight: 500;
+}
+.v {
+  font-weight: 600;
+}
+</style>
+
 </head>
 <body>
   <div class="wrap">
@@ -13,8 +28,14 @@
         <div class="logo">W</div>
         <div>
           <h1 id="title">Погода (WeatherAPI) - быстрый запрос</h1>
-          <p class="lead">Введи название города - получим текущую погоду (current.json)</p>
+          <p class="lead">Введи название города - получим текущую погоду</p>
         </div>
+      </div>
+
+      <!-- Language -->
+      <div id="lang-switcher" style="position:absolute; top:15px; right:15px; display:flex; gap:10px; cursor:pointer;">
+          <img src="https://flagcdn.com/24x18/ru.png" id="lang-ru" alt="RU" width="32" data-lang="ru">
+          <img src="https://flagcdn.com/24x18/gb.png" id="lang-en" alt="EN" width="32" data-lang="en">
       </div>
 
       <form id="form" class="controls" onsubmit="return false;">
@@ -24,6 +45,7 @@
 
       <div class="main single">
         <div class="card" id="result">
+
           <div id="empty" class="small" style="opacity:0.9">
             Введите город и нажмите Send - покажу только самое полезное: город (ссылка на карты), температура, условие, ветер, влажность и т.д.
           </div>
@@ -31,7 +53,7 @@
           <div id="data" style="display:none">
             <div class="city">
               <div>
-                <a id="maplink" href="#" target="_blank" rel="noopener noreferrer" title="Открыть в Google Maps">
+                <a id="maplink" href="#" target="_blank" rel="noopener noreferrer">
                   <div class="city-name" id="cityName">-</div>
                 </a>
                 <div class="meta" id="locationMeta">-</div>
@@ -47,14 +69,44 @@
               </div>
             </div>
 
-            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
-              <div class="stat"><div class="k">Feels like</div><div class="v" id="feels">-</div></div>
-              <div class="stat"><div class="k">Wind</div><div class="v" id="wind">-</div></div>
-              <div class="stat"><div class="k">Humidity</div><div class="v" id="hum">-</div></div>
-              <div class="stat"><div class="k">Pressure</div><div class="v" id="pres">-</div></div>
-              <div class="stat"><div class="k">Precip</div><div class="v" id="precip">-</div></div>
-              <div class="stat"><div class="k">Visibility</div><div class="v" id="vis">-</div></div>
-              <div class="stat"><div class="k">UV</div><div class="v" id="uv">-</div></div>
+            <!-- STATS -->
+            <div style="margin-top:14px; display:flex; gap:16px; flex-wrap:wrap">
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_feels">Feels like</div>-->
+                  <div class="v" id="feels">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_wind">Wind</div>-->
+                  <div class="v" id="wind">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_humidity">Humidity</div>-->
+                  <div class="v" id="hum">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_pressure">Pressure</div>-->
+                  <div class="v" id="pres">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_precip">Precip</div>-->
+                  <div class="v" id="precip">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_visibility">Visibility</div>-->
+                  <div class="v" id="vis">-</div>
+              </div>
+
+              <div class="stat">
+                  <!--<div class="k" data-t="lbl_uv">UV</div>-->
+                  <div class="v" id="uv">-</div>
+              </div>
+
             </div>
 
             <div class="footer">
@@ -64,12 +116,14 @@
           </div>
 
           <div id="error" class="error" style="display:none"></div>
-        </div>
 
+        </div>
       </div>
 
     </div>
   </div>
-    <script src="/scripts/main.js"></script>
+
+  <script src="/scripts/main.js"></script>
+
 </body>
 </html>
