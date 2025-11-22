@@ -168,6 +168,19 @@
   .stat .k{ font-weight:700 }
   .stat .v{ color:var(--muted); font-size:14px }
 
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    width: 150px;   /* можешь менять */
+  }
+  .k {
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .v {
+    font-weight: 600;
+  }
+
   .footer{
     margin-top:14px;
     color:var(--muted);
